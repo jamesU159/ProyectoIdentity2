@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página web</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="header" id="inicio">
+        <img class="hamburguer" src="/img/hamburguesa.svg" alt="">
+        <nav class="menu-navegacion">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicio">Quienes somos</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#expertos">mision y vision</a>
+            <a href="#footer">Contacto</a>
+        </nav>
+        <div class="contenedor head">
+            <h1 class="titulo">UME</h1>
+            <p class="copy">una mano al empleado</p>
+        </div>
+        <div class="espacio">
+
+
+
+            <div class="contenedor-form">
+                <div class="">
+
+                </div>
+
+                <div class="formulario">
+                    <h2>Iniciar Sesión</h2>
+                    <form action="">
+                        <input type="text" placeholder="Usuario" required>
+                        <input type="password" placeholder="Contraseña" required>
+                        <input type="submit" value="Usuario">
+                        <input type="submit" value="Administrador">
+
+
+
+                    </form>
+                </div>
+
+
+                <div class="reset-password">
+                    <a href="#">Olvide mi Contraseña?</a>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+    <main>
+        <section class="services contenedor" id="servicio">
+            <h2 class="subtitulo">Constructora RyR</h2>
+            <div class="contenedor-servicio">
+                <img src="/img/Ume.png" alt="">
+                <div class="checklist-servicio">
+                    <div class="service">
+                        <h3 class="n-service"><span class="number">1</span>Quienes somos</h3>
+                        <p> Somos una empresa que, más que vender construcciones y proyectos, asumimos nuestro trabajo como un servicio dedicado a las personas. Para nosotros, es de vital importancia que lo que hacemos sea del completo agrado y utilidad para la gente que espera solo lo mejor de nuestros profesionales. Por eso nos esforzamos en cumplir con nuestros compromisos, entendiéndolos no solo como un negocio, sino también como una oportunidad cierta de brindar a las personas la tranquilidad y el regocijo de disfrutar de espacios construidos y adaptados a sus necesidades y gustos. Es esta sensibilidad tan marcada hacia lo humano lo que nos ha otorgado el sello de distinción y calidad de servicio, en comparación con otras compañías constructoras.</p>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="gallery" id="galeria">
+            <div class="contenedor">
+                <h2 class="subtitulo">Galeria</h2>
+                <div class="contenedor-galeria">
+                    <img src="/img/1.jpg" class="img-galeria" alt="Hola">
+                    <img src="/img/2.jpg" class="img-galeria" alt="">
+                    <img src="/img/3.jpg" class="img-galeria" alt="">
+                    <img src="/img/4.jpg" class="img-galeria" alt="">
+                    <img src="/img/5.jpg" class="img-galeria" alt="">
+                    <img src="/img/6.jpg" class="img-galeria" alt="">
+                </div>
+            </div>
+        </section>
+        <div class="imagen-light">
+            <img src="/img/close.svg" alt="" class="close">
+            <img src="" alt="" class="agregar-imagen">
+        </div>
+        <section class="contenedor" id="expertos">
+            <h2 class="subtitulo"></h2>
+            <section class="experts">
+                <div class="cont-expert">
+                    <img src="/img/pie_chart.svg" alt="">
+                    <h1 class="n-expert">MISION</h1>
+                    <P>Transformamos sueños en realidad, con sentido humano y conciencia ambiental, dejando una huella positiva y perdurable en nuestro entorno</P>
+                </div>
+                <div class="cont-expert">
+                    <img src="/img/search_engine.svg" alt="">
+                    <h1 class="n-expert">VISION</h1>
+                    <P>En el 2020 seremos reconocidos por la identidad, organización y calidad de nuestra empresa y de nuestros proyectos.</P>
+                </div>
+
+            </section>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="contenedor footer-content">
+            <div class="contact-us">
+                <h2 class="brand">CONSTRUCTORA RyR</h2>
+                <p></p>
+            </div>
+            <div class="social-media">
+                <a href="./" class="social-media-icon">
+                    <i class='bx bxl-facebook'></i>
+                </a>
+                <a href="./" class="social-media-icon">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="./" class="social-media-icon">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+            </div>
+        </div>
+        <div class="line"></div>
+    </footer>
+    <script src="/js/menu.js"></script>
+    <script src="/js/lightbox.js"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

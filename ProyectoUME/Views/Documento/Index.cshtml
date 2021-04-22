@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProyectoUME.Models.Documento>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Vista de documentos</h1>
+
+<p class="text-center">
+    <a asp-action="Create" class="btn-outline-primary">agregar nuevo documento</a>
+</p>
+<div class="container">
+    
+        <div class="row justify-content-md-center">
+            <div class="col-md-9">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fecha)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CursoAlturas)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CertificadoEps)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CertificadoArl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CertificadoPension)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HojaVida)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CursoAlturas)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CertificadoEps)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CertificadoArl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CertificadoPension)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HojaVida)
+                                </td>
+                                <td>
+                                    |
+                                    <a asp-action="Details" asp-route-id="@item.IdTramite" class="btn-outline-info">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.IdTramite" class="btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

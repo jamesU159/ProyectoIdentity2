@@ -1,0 +1,59 @@
+﻿@model ProyectoUME.Models.Documento
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Editar Documento</h1>
+
+<h4 class="text-center">Documento</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="form-inline">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTramite" />
+            <div class="form-group  mx-sm-3">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <label asp-for="CursoAlturas" class="control-label"></label>
+                <input asp-for="CursoAlturas" class="form-control" />
+                <span asp-validation-for="CursoAlturas" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <label asp-for="CertificadoEps" class="control-label"></label>
+                <input asp-for="CertificadoEps" class="form-control" />
+                <span asp-validation-for="CertificadoEps" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <label asp-for="CertificadoArl" class="control-label"></label>
+                <input asp-for="CertificadoArl" class="form-control" />
+                <span asp-validation-for="CertificadoArl" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <label asp-for="CertificadoPension" class="control-label"></label>
+                <input asp-for="CertificadoPension" class="form-control" />
+                <span asp-validation-for="CertificadoPension" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <label asp-for="HojaVida" class="control-label"></label>
+                <input asp-for="HojaVida" class="form-control" />
+                <span asp-validation-for="HojaVida" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-sm-3">
+                <input type="submit" value="Editar" class="btn btn-outline-primary" />
+                <input type="submit" asp-action="Index" value="Cancelar" class="btn btn-outline-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

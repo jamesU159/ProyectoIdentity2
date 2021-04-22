@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoUME</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="/css/BarraSuperior.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+
+    <div id="sidebar">
+
+        <ul>
+            <li>
+                <img src="/img/Ume.png" alt="Logo Fazt" class="logo">
+            </li>
+        </ul>
+        <ul>
+            <button class="accordion">Perfil</button>
+            <a href="Actualizacion de perfil2.html"><button class="accordion" class="icon">Actualizar Perfil</button></a>
+        </ul>
+
+        <button class="accordion">Documentos</button>
+        <div class="panel">
+
+            <a asp-controller="Documento" asp-action="index">
+                <button class="accordion">
+                    Ver documentos
+                </button>
+            </a>
+
+            <a asp-controller="Documento" asp-action="create">
+                <button class="accordion">
+                    Agregar Documentos
+                </button>
+            </a>
+        </div>
+
+        <button class="accordion">Excusa</button>
+        <div class="panel">
+            <a href="Registrar Excusa.html">
+                <button class="accordion">
+                    Entregar Excusa
+                </button>
+            </a>
+            <a href="Estado Excusa.html">
+                <button class="accordion">
+                    Ver estado de la excusa
+                </button>
+            </a>
+        </div>
+
+        <button class="accordion">Permiso</button>
+        <div class="panel">
+            <a href="permiso.html">
+                <button class="accordion">
+                    Solicitar un permiso
+                </button>
+            </a>
+            <a href="Estado Permiso.html">
+                <button class="accordion">
+                    Ver estado del permiso
+                </button>
+            </a>
+        </div>
+
+        <button class="accordion">Horario</button>
+        <div class="panel">
+            <a href="Horario Consulta.html">
+                <button class="accordion">
+                    Ver horario
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+    <div id="header">
+
+        <div id="centro1">
+
+            <div id="menu">
+                <ul>
+                    <li><a href="">Volver</a></li>
+                    <li><a href="">Reporte</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Cerrar sesion</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="container contenido">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script>
+        const btnToggle = document.querySelector('.toggle-btn');
+
+        btnToggle.addEventListener('click', function () {
+            console.log('clik')
+            document.getElementById('sidebar').classList.toggle('active');
+            console.log(document.getElementById('sidebar'))
+        });
+    </script>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }</script>
+
+    <script src="/js/main.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
