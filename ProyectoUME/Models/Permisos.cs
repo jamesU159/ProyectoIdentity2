@@ -9,14 +9,15 @@ namespace ProyectoUME.Models
     public class Permisos
     {
         [Key]
-        public int IdTramite { get; set; }
-        public DateTime? Fecha { get; set; }
-        public string CursoAlturas { get; set; }
-        public string CertificadoEps { get; set; }
-        public string CertificadoArl { get; set; }
-        public string CertificadoPension { get; set; }
-        public string HojaVida { get; set; }
+        public int IdPermiso { get; set; }
+        public string Nombre1 { get; set; }
+        public string Nombre2 { get; set; }
+        public string Apellido1 { get; set; }
+        public string Apellido2 { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
+        public int IdUsuario { get; set; }
 
-        public virtual Usuario IdTramiteNavigation { get; set; }
+        public virtual Usuario IdUsuarioNavigation { get; set; }
     }
 }

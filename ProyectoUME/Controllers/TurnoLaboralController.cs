@@ -10,22 +10,23 @@ using ProyectoUME.Models;
 
 namespace ProyectoUME.Controllers
 {
-    public class EmpresaController : Controller
+    public class TurnoLaboralController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmpresaController(ApplicationDbContext context)
+        public TurnoLaboralController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Empresa
+        // GET: TurnoLaboral
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Empresa.ToListAsync());
+            var applicationDbContext = _context.TurnoLaboral.Include(t => t.JornadaIdJornadaNavigation);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Empresa/Details/5
+        // GET: TurnoLaboral/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace ProyectoUME.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresa
-                .FirstOrDefaultAsync(m => m.Nit == id);
-            if (empresa == null)
+            var turnoLaboral = await _context.TurnoLaboral
+                .Include(t => t.JornadaIdJornadaNavigation)
+                .FirstOrDefaultAsync(m => m.IdConsulta == id);
+            if (turnoLaboral == null)
             {
                 return NotFound();
             }
 
-            return View(empresa);
+            return View(turnoLaboral);
         }
 
-        // GET: Empresa/Create
+        // GET: TurnoLaboral/Create
         public IActionResult Create()
         {
+            ViewData["JornadaIdJornada"] = new SelectList(_context.Jornada, "IdJornada", "IdJornada");
             return View();
         }
 
-        // POST: Empresa/Create
+        // POST: TurnoLaboral/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nit,NombreEmpresa,Direccion,Ciudad,Telefono")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("IdConsulta,HoraIngreso,HoraSalida,JornadaIdJornada,IdUsuario")] TurnoLaboral turnoLaboral)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(empresa);
+                _context.Add(turnoLaboral);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(empresa);
+            ViewData["JornadaIdJornada"] = new SelectList(_context.Jornada, "IdJornada", "IdJornada", turnoLaboral.JornadaIdJornada);
+            return View(turnoLaboral);
         }
 
-        // GET: Empresa/Edit/5
+        // GET: TurnoLaboral/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace ProyectoUME.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresa.FindAsync(id);
-            if (empresa == null)
+            var turnoLaboral = await _context.TurnoLaboral.FindAsync(id);
+            if (turnoLaboral == null)
             {
                 return NotFound();
             }
-            return View(empresa);
+            ViewData["JornadaIdJornada"] = new SelectList(_context.Jornada, "IdJornada", "IdJornada", turnoLaboral.JornadaIdJornada);
+            return View(turnoLaboral);
         }
 
-        // POST: Empresa/Edit/5
+        // POST: TurnoLaboral/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nit,NombreEmpresa,Direccion,Ciudad,Telefono")] Empresa empresa)
+        public async Task<IActionResult> Edit(int id, [Bind("IdConsulta,HoraIngreso,HoraSalida,JornadaIdJornada,IdUsuario")] TurnoLaboral turnoLaboral)
         {
-            if (id != empresa.Nit)
+            if (id != turnoLaboral.IdConsulta)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace ProyectoUME.Controllers
             {
                 try
                 {
-                    _context.Update(empresa);
+                    _context.Update(turnoLaboral);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmpresaExists(empresa.Nit))
+                    if (!TurnoLaboralExists(turnoLaboral.IdConsulta))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace ProyectoUME.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(empresa);
+            ViewData["JornadaIdJornada"] = new SelectList(_context.Jornada, "IdJornada", "IdJornada", turnoLaboral.JornadaIdJornada);
+            return View(turnoLaboral);
         }
 
-        // GET: Empresa/Delete/5
+        // GET: TurnoLaboral/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace ProyectoUME.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresa
-                .FirstOrDefaultAsync(m => m.Nit == id);
-            if (empresa == null)
+            var turnoLaboral = await _context.TurnoLaboral
+                .Include(t => t.JornadaIdJornadaNavigation)
+                .FirstOrDefaultAsync(m => m.IdConsulta == id);
+            if (turnoLaboral == null)
             {
                 return NotFound();
             }
 
-            return View(empresa);
+            return View(turnoLaboral);
         }
 
-        // POST: Empresa/Delete/5
+        // POST: TurnoLaboral/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var empresa = await _context.Empresa.FindAsync(id);
-            _context.Empresa.Remove(empresa);
+            var turnoLaboral = await _context.TurnoLaboral.FindAsync(id);
+            _context.TurnoLaboral.Remove(turnoLaboral);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmpresaExists(int id)
+        private bool TurnoLaboralExists(int id)
         {
-            return _context.Empresa.Any(e => e.Nit == id);
+            return _context.TurnoLaboral.Any(e => e.IdConsulta == id);
         }
     }
 }

@@ -19,10 +19,6 @@
                 <img src="/img/Ume.png" alt="Logo Fazt" class="logo">
             </li>
         </ul>
-        <ul>
-            <button class="accordion">Perfil</button>
-            <a href="Actualizacion de perfil2.html"><button class="accordion" class="icon">Actualizar Perfil</button></a>
-        </ul>
 
         <button class="accordion">Documentos</button>
         <div class="panel">
@@ -42,41 +38,17 @@
 
         <button class="accordion">Excusa</button>
         <div class="panel">
-            <a href="Registrar Excusa.html">
+            <a asp-controller="Excusa" asp-action="create">
                 <button class="accordion">
                     Entregar Excusa
                 </button>
             </a>
-            <a href="Estado Excusa.html">
+            <a asp-controller="Excusa" asp-action="index">
                 <button class="accordion">
                     Ver estado de la excusa
                 </button>
             </a>
         </div>
-
-        <button class="accordion">Permiso</button>
-        <div class="panel">
-            <a href="permiso.html">
-                <button class="accordion">
-                    Solicitar un permiso
-                </button>
-            </a>
-            <a href="Estado Permiso.html">
-                <button class="accordion">
-                    Ver estado del permiso
-                </button>
-            </a>
-        </div>
-
-        <button class="accordion">Horario</button>
-        <div class="panel">
-            <a href="Horario Consulta.html">
-                <button class="accordion">
-                    Ver horario
-                </button>
-            </a>
-        </div>
-
     </div>
 
     <div id="header">
@@ -85,8 +57,7 @@
 
             <div id="menu">
                 <ul>
-                    <li><a href="">Volver</a></li>
-                    <li><a href="">Reporte</a></li>
+                    <li><a asp-controller="Bienvenido" asp-action="Index">Volver</a></li>
                     <li><a asp-controller="Home" asp-action="Index">Cerrar sesion</a></li>
                 </ul>
 
